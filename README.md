@@ -1,30 +1,28 @@
-# 🚀 Automated CI/CD Pipeline for Dockerized Web App
+# 📊 Log Monitoring & Observability System (ELK Stack)
 
-This repository contains a full-stack CI/CD pipeline demonstrating automated deployment of a Python-based web application to AWS using Jenkins and Docker.
+Real-time monitoring and log aggregation system for containerized microservices using the **Elasticsearch, Logstash, and Kibana (ELK)** stack.
 
-## 🏗️ Architecture
-The pipeline follows a modern DevOps workflow to ensure code quality and rapid deployment:
+## 🔎 Why this matters
+In a DevOps environment, visibility is king. This project provides a centralized dashboard to track application errors and system performance in real-time.
 
-1. **VCS:** Developer pushes code to **GitHub**.
-2. **Build:** **Jenkins** triggers a build job via Webhooks.
-3. **Containerize:** Jenkins builds a **Docker** image using a multi-stage `Dockerfile`.
-4. **Test:** Automated unit tests are executed within the container environment.
-5. **Deploy:** The image is pushed to a registry and deployed to an **AWS EC2** instance.
-6. **Proxy:** **Nginx** acts as a reverse proxy to serve the application on Port 80.
+## 🏗️ The Stack
+- **Elasticsearch:** Distributed search engine for log storage.
+- **Logstash:** Data processing pipeline to ingest and parse logs.
+- **Kibana:** Visualization layer for creating NOC-style dashboards.
+- **Filebeat:** Lightweight shipper for forwarding logs from containers.
 
-## 🛠️ Tech Stack
-* **CI/CD:** Jenkins (Declarative Pipeline)
-* **Containers:** Docker & Docker Compose
-* **Cloud:** AWS (EC2, Security Groups)
-* **Web Server:** Nginx
-* **Language:** Python (Flask) / Bash
+## 📈 Dashboard Features
+- **Error Tracking:** Visualization of 4xx and 5xx HTTP status codes.
+- **Latency Monitoring:** Heatmap of request response times.
+- **Resource Usage:** Tracking CPU/RAM spikes across Docker containers.
 
-## 📋 Key Features
-- **Pipeline as Code:** Managed via a `Jenkinsfile`.
-- **Environment Isolation:** Using Docker to ensure "it works on my machine" translates to production.
-- **Zero-Downtime Strategy:** Simple container restart logic with Nginx health checks.
+## 🚀 Setup
+1. Clone the repository.
+2. Run `docker-compose up -d`.
+3. Navigate to `localhost:5601` to view the Kibana UI.
+4. Logs from the sample `app` container will begin streaming automatically.
 
-## 🚦 Getting Started
-1. Ensure Jenkins is installed with the Docker pipeline plugin.
-2. Add your AWS SSH keys to Jenkins credentials.
-3. Run the pipeline by pointing Jenkins to this repo's `main` branch.
+## 🛠️ DevOps Skills
+- Log Aggregation & Parsing (Grok filters).
+- Container Orchestration (Docker Compose).
+- Operational Observability & Alerting.
