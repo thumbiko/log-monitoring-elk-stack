@@ -1,31 +1,30 @@
-## Project 3: Log Monitoring & Observability System
+# 🚀 Automated CI/CD Pipeline for Dockerized Web App
 
-**File:** `README.md`
+This repository contains a full-stack CI/CD pipeline demonstrating automated deployment of a Python-based web application to AWS using Jenkins and Docker.
 
-```markdown
-# Log Monitoring & Observability (ELK Stack)
+## 🏗️ Architecture
+The pipeline follows a modern DevOps workflow to ensure code quality and rapid deployment:
 
-A centralized logging solution designed to monitor containerized applications and provide real-time visual insights into system health.
+1. **VCS:** Developer pushes code to **GitHub**.
+2. **Build:** **Jenkins** triggers a build job via Webhooks.
+3. **Containerize:** Jenkins builds a **Docker** image using a multi-stage `Dockerfile`.
+4. **Test:** Automated unit tests are executed within the container environment.
+5. **Deploy:** The image is pushed to a registry and deployed to an **AWS EC2** instance.
+6. **Proxy:** **Nginx** acts as a reverse proxy to serve the application on Port 80.
 
-## 📊 Stack Components
+## 🛠️ Tech Stack
+* **CI/CD:** Jenkins (Declarative Pipeline)
+* **Containers:** Docker & Docker Compose
+* **Cloud:** AWS (EC2, Security Groups)
+* **Web Server:** Nginx
+* **Language:** Python (Flask) / Bash
 
+## 📋 Key Features
+- **Pipeline as Code:** Managed via a `Jenkinsfile`.
+- **Environment Isolation:** Using Docker to ensure "it works on my machine" translates to production.
+- **Zero-Downtime Strategy:** Simple container restart logic with Nginx health checks.
 
-- **Elasticsearch:** Search and analytics engine.
-- **Logstash:** Server-side data processing pipeline.
-- **Kibana:** Data visualization dashboard.
-- **Docker Compose:** Orchestration of the ELK stack.
-
-## 🔍 Implementation Details
-- **Log Collection:** Logstash collects logs from multiple Docker containers.
-- **Filtering:** Custom Grok filters to parse application logs into structured data.
-- **Visualization:** A Kibana dashboard showing:
-    - 404/500 Error rates.
-    - Traffic volume over time.
-    - Geographic distribution of requests.
-
-## 🏃 How to Run
-1. Clone the repo.
-2. Ensure Docker and Docker Compose are installed.
-3. Run the stack:
-   ```bash
-   docker-compose up -d
+## 🚦 Getting Started
+1. Ensure Jenkins is installed with the Docker pipeline plugin.
+2. Add your AWS SSH keys to Jenkins credentials.
+3. Run the pipeline by pointing Jenkins to this repo's `main` branch.
